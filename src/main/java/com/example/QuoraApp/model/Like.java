@@ -1,7 +1,6 @@
 package com.example.QuoraApp.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,22 +14,18 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "questions")
-public class Question {
+@NoArgsConstructor
+@Document(collection = "likes")
+public class Like {
     @Id
     private String id;
 
-    @NotBlank(message = "Title is required")
-    @Size(min = 10, max = 100, message = "Title must be between 10 and 100 characters")
-    private String title;
+    private String targetType; //QUESTION, ANSWERS, COMMENT
 
-    @NotBlank(message = "Content is required")
-    @Size(min = 10, max = 1000, message = "Content must be between 10 and 100 characters")
-    private String content;
+    private String targetId;
 
-    private Integer views;
+    private Boolean isLike;
 
     @CreatedDate
     private LocalDateTime createdAt;

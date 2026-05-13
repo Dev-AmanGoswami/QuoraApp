@@ -12,4 +12,6 @@ public interface IQuestionService {
     Flux<QuestionResponseDto> getAllQuestions(String cursor, int size);
 
     Flux<QuestionResponseDto> searchQuestions(String searchTerm, int offset, int page);
+
+    Mono<QuestionResponseDto> getQuestionById(String id); //Increase view count whenever this method gets clicked.
 }
